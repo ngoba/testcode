@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" font-family=arial>
+	<title>Practice Learn Code Easy</title>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+	<script type="text/javascript" scr="./test.js"></script>
+	<style type="text/css">
+		xmp{
+			display: inline;
+		}
+	</style>
+</head>
+<body   >
+<h3>BÀi KIỂM TRA HTML</h3>
+<form id="student-table"></form>
+<button onclick="back()">quay lại</button>
+<button onclick="next()">tiếp theo</button>
+<button onclick="kq()">xem kết quả</button>
+<p id="result"> </p>
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+var url='http://localhost:9801/posts/';
+var item;
+var studentTable = document.getElementById('student-table');
+var id=1;
+var result = {};
+var dbLength;
+var m=document.forms[0];
+
+
+axios.get(url).then(res => dbLength = res.data
+	).catch(err => console.log(err));
+	
+getData();
+
+function kq(){
+viewResult();
+document.getElementById('result').innerHTML = 'Kết quả kiểm tra của bạn là : ' + result +'/3';
+
+}
+
+function back(){
+
+	if(id<2)
+		id=1;
+	else
+	id--;
+	getData();
+	viewResult();
+	// m[result[item.id]].checked=true
+
+
+}
+
+function next(){
+	
+	if(id>dbLength.length-1) id=dbLength.length;
+	else
+	id++;
+	getData();
+	viewResult();
+	// m[result[item.id]].checked=true;
+
+
+}
+
+function viewResult(){
+	
+
+for (var i = 0; i < m.length; i++) 
+  {
+    if (m[i].checked) 
+    result[item.id]=i;  
+  }
+  m[result[item.id]].checked=true;	
+  }
+
+
+
+function getData(){
+var urls = url.concat(id);
+axios.get(urls).then(function(res){
+	item = res.data;
+	render(item);
+}).catch(err => console.log(err));
+}
+
+function render(item){
+var select = item['select'].map((item,index) => index+1 +'<input type="radio" name="abc"><xmp>'+item+'</xmp><br>');
+studentTable.innerHTML = 'Câu số  ' + item.id + '  : <xmp>'+ item.question + '</xmp><br>'+select.join('') ;
+}
+
+</script>
+
+</body>
+</html>

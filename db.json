@@ -1,0 +1,12 @@
+{"posts": [
+    { "id": 1, "question": "Phần tử HTML nào thực hiện xuống dòng mới?",
+    "select": ["<lb>","<break>","<br>","<p>"],
+    "answer":3},
+    { "id": 2, "question": "Đoạn mã HTML nào thực hiện chèn một ảnh nền vào trang web?",
+    "select": ["<break>","<background img=\"background.gif\">","<body style=\"background-image:url(background.gif)\">","<body bg=\"background.gif\">"],
+    "answer":2},
+    { "id": 3, "question": "Thẻ <input type=”Submit” …> dùng để làm gì?",
+    "select": ["Tạo một ô text để nhập dữ liệu","Tạo một nút lệnh dùng để xoá thông tin trong form","Tạo một nút lệnh dùng để gửi tin trong form đi","Tất cả các ý kiến trên"],
+    "answer":3}
+  ]
+}
